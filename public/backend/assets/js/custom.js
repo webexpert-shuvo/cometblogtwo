@@ -268,7 +268,7 @@
 
                     swal({
                         title: "Success!",
-                        text: "Category Deleted Successful",
+                        text: "Category Deleted WithOut Para Successful",
                         icon: "success",
                         button: "Done!",
                     });
