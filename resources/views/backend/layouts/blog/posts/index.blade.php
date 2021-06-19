@@ -50,9 +50,6 @@
 
                                     @foreach ($allposts as $posts)
 
-
-
-
                                         <tr>
                                             <td>{{ $loop -> index +1 }}</td>
                                             <td>{{ $posts -> name }}</td>
@@ -72,7 +69,7 @@
                                             </td>
                                             <td>{{ $posts ->created_at ->diffForHumans() }}</td>
                                             <td><span class="badge badge-{{ ($posts -> status == 'Active' ? 'success' : 'danger') }}">{{ ( $posts -> status == 'Active' ? 'Active' : 'Inactive'  )}}</span></td>
-                                            <td><a class="btn btn-sm btn-danger" href="{{ route('deletepost',$posts -> id) }}"><i class="fa fa-trash"></i></a></td>
+                                            <td><a class="btn btn-sm btn-danger" href="{{ route('deletepost',$posts -> id) }}"><i class="fa fa-trash"></i></a>  <a class="btn btn-sm btn-info" href=""><i class="fa fa-edit"></i></a>  </td>
                                         </tr>
 
                                     @endforeach

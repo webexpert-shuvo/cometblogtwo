@@ -67,6 +67,19 @@ use Illuminate\Support\Facades\Route;
 
 
 
+    //Comet Route
+
+    Route::get('/blog' ,[\App\Http\Controllers\CometBlogController::class , 'index'])->name('showblog');
+
+
+
+
+
+
+
+
+
+
 
 
 

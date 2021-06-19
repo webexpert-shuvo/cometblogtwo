@@ -54,12 +54,13 @@ class AdminPostController extends Controller
 
         //Gallery Image Uplaod
 
-        $gallimgname = [];
+        $allgall = [];
         if ($request -> hasFile('gallery')) {
             $galleryimage = $request -> file('gallery');
             foreach ($galleryimage as $gallimg) {
                 $gallimgname = md5(time().rand()).'.'.$gallimg ->getClientOriginalExtension();
                 $gallimg ->move(public_path('backend/assets/img/posts') ,$gallimgname);
+                array_push( $allgall , $gallimgname);
             }
         }
 
@@ -67,7 +68,7 @@ class AdminPostController extends Controller
         $featured = [
             'post_type' => $request -> post_type,
             'single'    => $singleuname,
-            'gallery'   => $gallimgname,
+            'post_gall' => $allgall,
         ];
 
         $post_data =    Post::create([
