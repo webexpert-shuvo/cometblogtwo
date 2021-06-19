@@ -51,6 +51,26 @@ use Illuminate\Support\Facades\Route;
 
 
 
+    //Profile  Route
+
+    Route::get('/profile' , [App\Http\Controllers\ProfileController::class, 'index'] )->name('showprofile');
+    Route::post('/profile/{id}' , [App\Http\Controllers\ProfileController::class, 'ProfileUpdate'] )->name('profileupdate');
+    Route::post('/profile-bio/{id}' , [App\Http\Controllers\ProfileController::class, 'ProfileBioUpdate'] )->name('profileupdate');
+
+    //Post Controller
+
+    Route::get('/posts'  , [App\Http\Controllers\AdminPostController::class, 'index'])->name('showpost');
+    Route::get('/posts-create'  , [App\Http\Controllers\AdminPostController::class, 'createPost'])->name('createpost');
+    Route::post('/posts-create'  , [App\Http\Controllers\AdminPostController::class, 'storePost'])->name('storepost');
+    Route::get('/posts-trash/{id}'  , [App\Http\Controllers\AdminPostController::class, 'trashPost'])->name('deletepost');
+
+
+
+
+
+
+
+
 
 
 

@@ -4,11 +4,28 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 class Tag extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function post()
+    {
+        return   $this -> belongsToMany('App\Models\Post');
+
+    }
+
+
+
+
+
+
+
+
+
+
 
 
 

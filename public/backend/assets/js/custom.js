@@ -277,10 +277,144 @@
                 }
 
             });
+        });
+
+
+        //Profile modal Show update
+
+        $(document).on('click','a.profile_edit_btn',function(e){
+            e.preventDefault();
+            let user_id = $(this).attr('user_data_id');
+            $('#edit_personal_details').modal('show');
+
+            $('form#profile_update_form').submit(function(e){
+                e.preventDefault();
+
+                $.ajax({
+
+                    url : '/profile/'+user_id,
+                    method : "POST",
+                    data : new FormData(this),
+                    contentType: false,
+                    processData: false,
+                    success : function(data){
+
+                        swal({
+                            title: "Success!",
+                            text: "Prtofile Update Successfull",
+                            icon: "success",
+                            button: "Done!",
+                        });
+
+                    }
+
+                });
+
+            })
+
+        });
+
+        //Profile Description Add
+        $(document).on('click','a.profile_edit_button',function(e){
+            e.preventDefault();
+
+            $('#profile_desc').modal('show');
+            let profile_desc_update = $(this).attr('profile_desc_update');
+
+            $('form#bioupdate').submit(function(e){
+                e.preventDefault();
+
+                $.ajax({
+
+                    url : '/profile-bio/'+profile_desc_update,
+                    method : "POST",
+                    data : new FormData(this),
+                    contentType : false,
+                    processData : false,
+                    success : function(data){
+
+                        swal({
+                            title: "Success!",
+                            text: "Prtofile Bio Successfull",
+                            icon: "success",
+                            button: "Done!",
+                        });
+
+                    }
+
+                });
+
+
+
+
+            });
 
 
 
         });
+
+        $('.alltags').select2();
+        CKEDITOR.replace( 'content' );
+
+
+        //Post Controll
+
+        $('#post_type').change(function(e){
+            e.preventDefault();
+
+            let single = $(this).val();
+
+            if (single == 'Single') {
+                $('.single').show();
+            } else {
+                $('.single').hide();
+            }
+
+            if (single == 'Gallery') {
+                $('.gallery').show();
+            } else {
+                $('.gallery').hide();
+            }
+
+        });
+
+        //Single Image uplaod
+        $('#single_image_upload').change(function(e){
+            e.preventDefault();
+            let singleurl = URL.createObjectURL(e.target.files[0]);
+            let single_img_uplaod = '<img src="'+singleurl+'" style="width:300px; height:300x; border:5px solid #252525; border-radious:4px;" >' ;
+            $('.single_image').html(single_img_uplaod);
+        });
+
+        //Gallry Image Uplod
+
+        $('#gallery_image_upload').change(function(e){
+            e.preventDefault();
+            gallimg = '';
+            for (let i = 0; i < e.target.files.length; i++) {
+                let gallery_url = URL.createObjectURL(e.target.files[i]);
+                gallimg += '<img  src="'+gallery_url+'" style="width:80px; height:80px; margin:10px 5px; border:3px solid red;">';
+            }
+            $('.gallery_image').html(gallimg);
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

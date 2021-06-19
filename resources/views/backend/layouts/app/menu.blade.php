@@ -11,14 +11,14 @@
                 <li class="submenu">
                     <a href="#"><i class="fe fe-document"></i> <span> Blog</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
-                        <li><a href="invoice-report.html">Posts</a></li>
+                        <li><a href="{{ route('showpost') }}">Posts</a></li>
                         <li><a href="{{ route('tags.show') }}">Tag</a></li>
                         <li><a href="{{ route('show.category') }}">Category</a></li>
                     </ul>
                 </li>
 
                 <li>
-                    <a href="profile.html"><i class="fe fe-user-plus"></i> <span>Profile</span></a>
+                    <a href="{{ route('showprofile') }}"><i class="fe fe-user-plus"></i> <span>Profile</span></a>
                 </li>
 
 
